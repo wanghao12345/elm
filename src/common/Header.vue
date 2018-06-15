@@ -1,5 +1,7 @@
 <template>
-  <div>头部</div>
+  <div>
+    <div class="iconfont">&#xe624;</div>
+  </div>
 </template>
 
 <script>
