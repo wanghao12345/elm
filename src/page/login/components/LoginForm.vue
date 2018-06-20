@@ -11,7 +11,7 @@
         <section class="input_container">
           <input type="text" placeholder="验证码" v-model="codeNumber">
           <div class="code-img">
-            <img src="" alt="验证码">
+            <img :src="captchaCodeImg" alt="验证码">
             <div class="change-code-img">
               <p>看不清</p>
               <p class="change-btn">换一张</p>
@@ -32,9 +32,10 @@ export default {
   name: 'LoginForm',
   data () {
     return {
-      userAccount: null,
-      passWord: null,
-      codeNumber: null
+      userAccount: null, // 用户名账号
+      passWord: null, // 密码
+      codeNumber: null, // 验证码
+      captchaCodeImg: null // 验证码图片
     }
   }
 }
@@ -104,6 +105,6 @@ export default {
     border: 1px;
     border-radius: 0.15rem;
     text-align: center;
-    width: 15rem;    
+    width: 15rem;
   }
 </style>
