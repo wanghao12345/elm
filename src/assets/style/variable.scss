@@ -1,0 +1,7 @@
+$HeaderHeight: 2rem;
+$BackgroundColor: #3190e8;
+//宽高
+@mixin wh($width, $height){
+    width: $width;
+    height: $height;
+}

@@ -1,13 +1,13 @@
 <template>
   <div class="header-container">
     <router-link
-      to="/"
+      to="-1"
       tag="i"
     >
       <i class="iconfont back-btn">&#xe624;</i>
     </router-link>
-    <div class="header-title">账号登录</div>
-    <i class="login-register-btn">登录|注册</i>
+    <div class="header-title">{{HeadTitle}}</div>
+    <i class="login-register-btn" v-show="LoginIcon">登录|注册</i>
   </div>
 </template>
 
@@ -16,14 +16,18 @@ export default {
   name: 'Header',
   data () {
     return {
-
+      loginStatus: false
     }
+  },
+  props: {
+    HeadTitle: String,
+    LoginIcon: Boolean
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  @import '~style/variable.sass';
+  @import '~style/variable.scss';
   .header-container{
     width: 100%;
     height: $HeaderHeight;
@@ -31,6 +35,7 @@ export default {
     background: $BackgroundColor;
     color: white;
     position: relative;
+    @include wh(100%, 2rem)
     .back-btn{
       float: left;
       width: 2rem;
