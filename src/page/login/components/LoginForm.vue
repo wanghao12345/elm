@@ -31,11 +31,12 @@
 </template>
 
 <script>
-import {getcaptchas} from '../../../service/getData'
+import {getcaptchas, accountLogin} from '../../../service/getData'
 export default {
   name: 'LoginForm',
   data () {
     return {
+      userInfo: null, // 用户信息
       userAccount: null, // 用户名账号
       passWord: null, // 密码
       codeNumber: null, // 验证码
@@ -72,8 +73,33 @@ export default {
     /**
      * 登录请求
      */
-    handleLoginRequest () {
-      this.$layer.alert('登录失败！')
+    async handleLoginRequest () {
+      if (!this.userAccount) {
+        this.$alert('账号不能为空', '提示', {
+          confirmButtonText: '确定',
+          callback: action => {}
+        })
+      } else if (!this.passWord) {
+        this.$alert('密码不能为空', '提示', {
+          confirmButtonText: '确定',
+          callback: action => {}
+        })
+      } else if (!this.codeNumber) {
+        this.$alert('验证码不能为空', '提示', {
+          confirmButtonText: '确定',
+          callback: action => {}
+        })
+      } else {
+        this.userInfo = await accountLogin(this.userAccount, this.passWord, this.codeNumber)
+        if (!this.userInfo.user_id) {
+          this.$alert(this.userInfo.message, '提示', {
+            confirmButtonText: '确定',
+            callback: action => {}
+          })
+        } else {
+
+        }
+      }
     }
   }
 }
