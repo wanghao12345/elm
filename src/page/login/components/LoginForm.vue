@@ -6,13 +6,17 @@
           <input type="text" placeholder="账号" v-model="userAccount">
         </section>
         <section class="input_container">
-          <input type="password" placeholder="密码" v-model="passWord">
+          <input :type="passwordType" placeholder="密码" v-model="passWord">
+          <div class="password-see">
+            <i class="iconfont" v-show='switchPassword' @click="openPasswordShow">&#xe675;</i>
+            <i class="iconfont" v-show='!switchPassword' @click="closePasswordShow">&#xe677;</i>
+          </div>
         </section>
         <section class="input_container">
           <input type="text" placeholder="验证码" v-model="codeNumber">
           <div class="code-img">
-            <img :src="captchaCodeImg" alt="验证码">
-            <div class="change-code-img">
+            <img class="img" :src="captchaCodeImg" alt="验证码">
+            <div class="change-code-img" @click="getCaptchaCode">
               <p>看不清</p>
               <p class="change-btn">换一张</p>
             </div>
@@ -22,12 +26,12 @@
     </div>
     <p class="login_tips">温馨提示：未注册过的账号，登录时将自动注册</p>
     <p class="login_tips">注册过的用户可凭账号密码登录</p>
-    <button class="login-btn">登录</button>
+    <button class="login-btn" @click="handleLoginRequest">登录</button>
   </div>
-
 </template>
 
 <script>
+import {getcaptchas} from '../../../service/getData'
 export default {
   name: 'LoginForm',
   data () {
@@ -35,7 +39,41 @@ export default {
       userAccount: null, // 用户名账号
       passWord: null, // 密码
       codeNumber: null, // 验证码
-      captchaCodeImg: null // 验证码图片
+      captchaCodeImg: null, // 验证码图片
+      passwordType: 'password', // 密码的隐藏与显示
+      switchPassword: true // 密码显示与隐藏的开关
+    }
+  },
+  created () {
+    this.getCaptchaCode()
+  },
+  methods: {
+    /**
+     * 获取验证码
+     */
+    async getCaptchaCode () {
+      let res = await getcaptchas()
+      this.captchaCodeImg = res.code
+    },
+    /**
+     * 开启密码的显示
+     */
+    openPasswordShow () {
+      this.passwordType = 'text'
+      this.switchPassword = false
+    },
+    /**
+     * 关闭密码的显示
+     */
+    closePasswordShow () {
+      this.passwordType = 'password'
+      this.switchPassword = true
+    },
+    /**
+     * 登录请求
+     */
+    handleLoginRequest () {
+      this.$layer.alert('登录失败！')
     }
   }
 }
@@ -68,12 +106,13 @@ export default {
         right: 1rem;
         top: 0;
         bottom: 0;
-        overflow: hidden
-        img{
+        overflow: hidden;
+        .img{
           width: 4rem;
-          height: 100%;
+          height: 1.5rem;
           display: block;
           float: left;
+          margin-top: 0.25rem;
         }
         .change-code-img{
           float: right;
@@ -84,6 +123,16 @@ export default {
           .change-btn{
             color: $BackgroundColor;
           }
+        }
+      }
+      .password-see{
+        position: absolute;
+        right: 1rem;
+        top: 0rem;
+        line-height: 2rem;
+        .iconfont{
+          font-size: 1.2rem;
+          color: #3190e8;
         }
       }
     }

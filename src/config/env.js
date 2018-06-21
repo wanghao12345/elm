@@ -4,24 +4,20 @@
  * baseUrl: 域名地址
  * routerMode： 路由模式
  * imgBaseUrl： 图片所在域名地址
- * 
  */
-let baseUrl = '';
-let routerMode = 'hash';
-let imgBaseUrl = '';
+let baseUrl = ''
+let routerMode = 'hash'
+let imgBaseUrl = ''
 
-if (process.env.Node_ENV == 'development') {
-    imgBaseUrl = '/img/';
+if (process.env.Node_ENV === 'development') {
+  imgBaseUrl = '/img/'
 } else {
-    baseUrl = '//elm.cangdu.org';
-    imgBaseUrl = '//elm.cangdu.org/img/'
+  baseUrl = '//elm.cangdu.org'
+  imgBaseUrl = '//elm.cangdu.org/img/'
 }
 
 export {
-    baseUrl,
-    routerMode,
-    imgBaseUrl,
+  baseUrl,
+  routerMode,
+  imgBaseUrl
 }
-
-
-
