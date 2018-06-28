@@ -5,3 +5,13 @@ $BackgroundColor: #3190e8;
     width: $width;
     height: $height;
 }
+//字体大小
+@mixin sc($size, $color){
+    font-size: $size;
+    color: $color;
+}
+//flex布局和子元素对其方式
+@mixin fj($type: space-between){
+    display: flex;
+    justify-content: $type;
+}
