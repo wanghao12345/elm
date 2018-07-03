@@ -1,7 +1,25 @@
 $HeaderHeight: 2rem;
 $BackgroundColor: #3190e8;
+
+//超出部分用省略号表示
+@mixin ellipsis(){
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
 //宽高
 @mixin wh($width, $height){
     width: $width;
     height: $height;
+}
+//字体大小
+@mixin sc($size, $color){
+    font-size: $size;
+    color: $color;
+}
+//flex布局和子元素对其方式
+@mixin fj($type: space-between){
+    display: flex;
+    justify-content: $type;
 }

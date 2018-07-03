@@ -4,7 +4,13 @@
       to="-1"
       tag="i"
     >
-      <i class="iconfont back-btn">&#xe624;</i>
+      <i class="iconfont back-btn" v-show="!HomeLogo">&#xe624;</i>
+    </router-link>
+    <router-link
+      to="/"
+      tag="i"
+    >
+      <i class="home-logo" v-show="HomeLogo">ele.me</i>
     </router-link>
     <div class="header-title">{{HeadTitle}}</div>
     <i class="login-register-btn" v-show="LoginIcon">登录|注册</i>
@@ -21,7 +27,8 @@ export default {
   },
   props: {
     HeadTitle: String,
-    LoginIcon: Boolean
+    LoginIcon: Boolean,
+    HomeLogo: Boolean
   }
 }
 </script>
@@ -39,6 +46,10 @@ export default {
     .back-btn{
       float: left;
       width: 2rem;
+    }
+    .home-logo{
+      float: left;
+      margin-left: 0.5rem;
     }
     .header-title{
       font-size: 0.7rem;
