@@ -2,18 +2,18 @@
   <div class="hot_city">
     <div class="hot_city_title">热门城市</div>
     <ul class="hot_city_list">
-      <router-link
+      <li
         v-for="item in hotcity"
-        tag="li"
-        :to="'/city/' + item.id"
         :key="item.id"
-      >{{item.name}}</router-link>
+        @click="handleChangeCity(item.name, item.id)"
+      >{{item.name}}</li>
     </ul>
   </div>
 </template>
 
 <script>
 import {hotcity} from '../../../service/getData'
+import {mapMutations} from 'vuex'
 export default {
   name: 'HomeHot',
   data () {
@@ -26,6 +26,15 @@ export default {
     hotcity().then(res => {
       this.hotcity = res
     })
+  },
+  methods: {
+    ...mapMutations([
+      'CHOOSE_ADDRESS'
+    ]),
+    handleChangeCity (city, cityId) {
+      this.CHOOSE_ADDRESS(city, cityId)
+      this.$router.push('/city/' + cityId)
+    }
   }
 }
 </script>
