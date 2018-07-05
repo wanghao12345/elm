@@ -23,3 +23,7 @@ $BackgroundColor: #3190e8;
     display: flex;
     justify-content: $type;
 }
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'Microsoft Yahei'){
+    font: #{$size}/#{$line-height} $family;
+}

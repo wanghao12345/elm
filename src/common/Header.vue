@@ -14,7 +14,7 @@
     <div class="header-title">{{HeadTitle}}</div>
     <router-link
       tag="i"
-      to="/login"    
+      to="/login"
       class="header-right login-register-btn"
       v-show="LoginIcon"
     >登录|注册</router-link>
