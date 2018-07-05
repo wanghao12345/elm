@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import {cityGuess} from '../../../service/getData'
 export default {
   name: 'HomeLocation',
   data () {
@@ -21,10 +20,6 @@ export default {
     }
   },
   mounted () {
-    cityGuess().then(res => {
-      this.guessCity = res.name
-      this.guessCityid = res.id
-    })
   }
 }
 </script>

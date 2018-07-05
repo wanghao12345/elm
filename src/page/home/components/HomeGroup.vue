@@ -10,14 +10,13 @@
         <i v-show="index == 0">(按字母排序)</i>
       </div>
       <ul class="group_city_ul">
-        <router-link
-          tag="li"
+        <li
           v-for="item in value"
           :key="item.id"
-          :to="'/city/' + item.id"
+          @click="handleChangeCity(item.name, item.id)"
         >
           {{item.name}}
-        </router-link>
+        </li>
       </ul>
     </div>
   </div>
@@ -25,6 +24,7 @@
 
 <script>
 import {groupcity} from '../../../service/getData'
+import {mapMutations} from 'vuex'
 export default {
   name: 'HomeGroup',
   data () {
@@ -47,6 +47,15 @@ export default {
         }
       }
       return sortobj
+    }
+  },
+  methods: {
+    ...mapMutations([
+      'CHOOSE_ADDRESS'
+    ]),
+    handleChangeCity (city, cityId) {
+      this.CHOOSE_ADDRESS(city, cityId)
+      this.$router.push('/city/' + cityId)
     }
   }
 }

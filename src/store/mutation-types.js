@@ -1,0 +1,1 @@
+export const CHOOSE_ADDRESS = 'CHOOSE_ADDRESS'
