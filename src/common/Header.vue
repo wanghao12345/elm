@@ -2,9 +2,15 @@
   <div class="header-container">
     <i
       class="iconfont back-btn header-left"
-      v-show="!HomeLogo"
+      v-show="GoBack"
       @click="handleClickBack"
     >&#xe624;</i>
+    <i
+      class="iconfont soso header-left"
+      v-show="SoSoIcon"
+    >
+      &#xe61e;
+    </i>
     <router-link
       class="home-logo header-left"
       v-show="HomeLogo"
@@ -12,6 +18,9 @@
       tag="i"
     >ele.me</router-link>
     <div class="header-title">{{HeadTitle}}</div>
+    <router-link to="/" tag="div" class="header-title">
+      {{HeadAddress}}
+    </router-link>
     <router-link
       tag="i"
       to="/login"
@@ -37,9 +46,12 @@ export default {
   },
   props: {
     HeadTitle: String,
+    HeadAddress: String,
     LoginIcon: Boolean,
     HomeLogo: Boolean,
-    SwitchCity: Boolean
+    SwitchCity: Boolean,
+    GoBack: Boolean,
+    SoSoIcon: Boolean
   },
   methods: {
     /**
@@ -69,14 +81,20 @@ export default {
       left: 0;
       z-index: 1;
     }
+    .soso{
+      font-size: 1rem;
+    }
     .home-logo{
       margin-left: 0.5rem;
     }
     .header-title{
       font-size: 0.7rem;
-      width: 100%;
+      width: 9rem;
       height: 100%;
       position: absolute;
+      left: 50%;
+      margin-left: -4.5rem;
+      @include ellipsis();
     }
     .header-right{
       position: absolute;

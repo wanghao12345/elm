@@ -2,6 +2,7 @@
   <div>
     <login-header
       :HeadTitle="HeadTitle"
+      :GoBack="true"
     >
     </login-header>
     <login-form></login-form>
