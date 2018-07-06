@@ -40,7 +40,6 @@ export default {
     } else if (path.indexOf('profile') === 1) {
       this.index = 4
     }
-
   }
 }
 </script>
