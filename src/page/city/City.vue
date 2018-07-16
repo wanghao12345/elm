@@ -3,6 +3,7 @@
     <city-header
       :HeadTitle="cityname"
       :SwitchCity="true"
+      :GoBack="true"
     ></city-header>
     <form class="city_form" v-on:submit.prevent>
       <div>
@@ -63,7 +64,10 @@ export default {
     currentcity(this.cityid).then(res => {
       this.cityname = res.name
     })
+    // 初始化历史数据
     this.initData()
+    // 使用better-scroll
+    // this.scroll = new BScroll(this.$refs.wrapper)
   },
   methods: {
     /**

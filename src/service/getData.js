@@ -44,3 +44,17 @@ export const searchplace = (cityid, value) => fetch('/v1/pois', {
   city_id: cityid,
   keyword: value
 })
+
+/**
+ * 获取msite页面地址信息
+ */
+export const msiteAddress = geohash => fetch('/v2/pois/' + geohash)
+
+/**
+ * 获取msite页面食品分类列表
+ */
+export const msiteFoodTypes = geohash => fetch('/v2/index_entry', {
+  geohash,
+  group_type: '1',
+  'flags[]': 'F'
+})
