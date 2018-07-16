@@ -5,7 +5,9 @@
       :SoSoIcon="true"
       :HeadAddress="MsiteTitle"
     ></msite-header>
-    <msite-banner></msite-banner>
+    <fade-animation>
+      <msite-banner></msite-banner>
+    </fade-animation>
     <foot-guide></foot-guide>
   </div>
 </template>
@@ -13,6 +15,7 @@
 <script>
 import {mapState, mapMutations} from 'vuex'
 import MsiteHeader from '@/common/Header'
+import FadeAnimation from '@/common/animation/FadeAnimation'
 import MsiteBanner from './components/MsiteBanner'
 import FootGuide from '@/common/FootGuide'
 import {msiteAddress} from '../../service/getData'
@@ -21,6 +24,7 @@ export default {
   components: {
     MsiteHeader,
     MsiteBanner,
+    FadeAnimation,
     FootGuide
   },
   data () {
