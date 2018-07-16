@@ -5,6 +5,7 @@
       :SoSoIcon="true"
       :HeadAddress="MsiteTitle"
     ></msite-header>
+    <msite-banner></msite-banner>
     <foot-guide></foot-guide>
   </div>
 </template>
@@ -12,12 +13,14 @@
 <script>
 import {mapState, mapMutations} from 'vuex'
 import MsiteHeader from '@/common/Header'
+import MsiteBanner from './components/MsiteBanner'
 import FootGuide from '@/common/FootGuide'
 import {msiteAddress} from '../../service/getData'
 export default {
   name: 'Msite',
   components: {
     MsiteHeader,
+    MsiteBanner,
     FootGuide
   },
   data () {
